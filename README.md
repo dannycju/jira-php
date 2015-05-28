@@ -68,6 +68,6 @@ $result = $db->search_issues('{
 Example of using function of the parent class of JIRA class, JIRABase.
 Add "true" as third parameter to have result returned in JSON string format
 ```php
-$parameters2 = '{ "jql": "issue = 35213", "fields": [""], "expand": ["changelog"] }';
+$parameters = '{ "jql": "issue = 35213", "fields": [""], "expand": ["changelog"] }';
 $json_result = $jira->query_use_post('search', $parameters, true);
 ```
