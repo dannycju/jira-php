@@ -11,22 +11,22 @@ requere_once('JIRA.php');
 
 Create object of JIRA
 ```php
-$db = new JIRA('https://jira.atlassian.com', 'username', 'password');
+$jira = new JIRA('https://jira.atlassian.com', 'username', 'password');
 ```
 
 Search with JQL query as the only parameter
 ```php
-$result = $db->search_issues('updated > startOfDay("-7")');
+$result = $jira->search_issues('updated > startOfDay("-7")');
 ```
 
 Search with extra parameters. Write both JQL query and the extra parameter in an array.
 ```php
-$result = $db->search_issues([ 'updated > startOfDay("-7")', 'fields' => [''] ]);
+$result = $jira->search_issues([ 'updated > startOfDay("-7")', 'fields' => [''] ]);
 ```
 
 Another example with more parameters
 ```php
-$result = $db->search_issues([
+$result = $jira->search_issues([
     'updated > startOfDay("-60") and updated < startOfDay("-30")',
     'fields' => ['project', 'worklog'],
     'startAt' => 0,
@@ -41,7 +41,7 @@ $fields = ['project', 'worklog'];
 $start_at = 0;
 $max_results = 50;
 
-$result = $db->search_issues([
+$result = $jira->search_issues([
     $jql,
     'fields' => $fields,
     'startAt' => $start_at,
@@ -59,7 +59,7 @@ if (property_exists($result, 'errors')) {
 
 All parameters can be written as a JSON string
 ```php
-$result = $db->search_issues('{
+$result = $jira->search_issues('{
     "jql": "updated > startOfDay("-7")",
     "fields": ""
 }');
