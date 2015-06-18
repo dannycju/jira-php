@@ -13,7 +13,7 @@ Create object of JIRA
 $jira = new JIRA('https://jira.atlassian.com', 'username', 'password');
 ```
 
-Search with JQL query as the only parameter
+Search with JQL query as the only parameter. Returned value is in PHP object format.
 ```php
 $result = $jira->search_issues('updated > startOfDay("-7")');
 ```
@@ -48,7 +48,7 @@ $result = $jira->search_issues([
 ]);
 ```
 
-Handle situation when JIRA returned an error message
+Use PHP function, property_exists(), to check whether JIRA returned an error message.
 ```php
 if (property_exists($result, 'errors')) {
     echo "[JIRA] Error messages: " . $jira->error_messages();
@@ -56,7 +56,7 @@ if (property_exists($result, 'errors')) {
 }
 ```
 
-All parameters can be written as a JSON string
+All parameters can be written in JSON string format
 ```php
 $result = $jira->search_issues('{
     "jql": "updated > startOfDay("-7")",
@@ -64,8 +64,7 @@ $result = $jira->search_issues('{
 }');
 ```
 
-Example of using function of the parent class of JIRA class, JIRABase.
-Add "true" as third parameter to have result returned in JSON string format
+To have result returned in JSON format, use function query_use_get() or query_use_post(), and add "true" as third parameter.
 ```php
 $parameters = '{ "jql": "issue = 35213", "fields": [""], "expand": ["changelog"] }';
 $json_result = $jira->query_use_post('search', $parameters, true);
