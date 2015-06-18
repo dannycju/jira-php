@@ -5,7 +5,7 @@ Very simple classes writen in PHP to use JIRA REST API.
 Usage
 -----
 ```php
-requere_once('JIRA.php');
+require_once('JIRA.php');
 ```
 
 Create object of JIRA
