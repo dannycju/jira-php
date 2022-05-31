@@ -1,5 +1,5 @@
 # jira-php
-Very simple classes writen in PHP to use JIRA REST API.
+Very simple classes that search JIRA via REST API.
 
 
 Usage
